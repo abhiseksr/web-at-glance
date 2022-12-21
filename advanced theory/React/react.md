@@ -135,7 +135,7 @@ JSX simplifies writing components (otherwise we need to create every DOM element
 It looks like returning HTML from within our JS code
 - All JSX tags must be closed
 
-We can embed javascript expressions(not statements) https://youtu.be/WVyCrI1cHi8(learn the difference between expression and statement) inside HTML code. We can further embed HTML code in the embeded javascript code, and so on. To use javascript expressions it must be enclosed in curly braces{}.
+We can embed javascript expressions(not statements) https://youtu.be/WVyCrI1cHi8 (learn the difference between expression and statement) inside HTML code. We can further embed HTML code in the embeded javascript code, and so on. To use javascript expressions it must be enclosed in curly braces{}.
 
 ### Babel
 
@@ -184,9 +184,10 @@ It usually is not done this way (we transpile code before the page load)
    )
  ```
  Babel transpiles JSX into nested React.createElement() - 
- <img width="916" alt="image" src="https://user-images.githubusercontent.com/85542595/208888010-c04dcf9c-1898-45cd-a751-b1e0acf57385.png">
-
+ 
  <img width="718" alt="image" src="https://user-images.githubusercontent.com/85542595/208888136-7beb6d3e-c8cd-4a7e-b515-7f9105815f93.png">
+ 
+ <img width="916" alt="image" src="https://user-images.githubusercontent.com/85542595/208888010-c04dcf9c-1898-45cd-a751-b1e0acf57385.png">
 
 
 ### JSX with JS and CSS
@@ -298,6 +299,8 @@ It is a module bundler for modern JS applications
 - Also bundles other assets like css, images, etc.
 - Separate components (e.g. pet.css contains styles only for pet.js, and is different from app files)
 
+
+
 ### Using Create React App
 
 ```bash
@@ -317,6 +320,12 @@ $create-react-app <projectname>
 - src
   - index.js is our render file
   - app.js is our app component
+
+### Modules import and export
+
+<img width="625" alt="image" src="https://user-images.githubusercontent.com/85542595/208896849-444da87d-b57f-4e29-bd9e-6263c33204eb.png">
+
+<img width="625" alt="image" src="https://user-images.githubusercontent.com/85542595/208896699-7658edee-3a28-469a-a881-b3b343a25a2f.png">
 
 ## React Props
 
@@ -350,6 +359,7 @@ class ShowText extends Component {
 class ShowText extends Component {
   render() {
     // never ever change this.props
+    // props are read only property inside child component
     this.props.text = 'Wrong!'; // TypeError
     this.props = {}; // Never do this, it breaks react!
     this.props.newProp = 'Also wrong!'; // Use default props, never create a new property that doesn't exist on this.props
@@ -357,6 +367,11 @@ class ShowText extends Component {
   }
 }
 ```
+
+### Types of props
+
+<img width="842" alt="image" src="https://user-images.githubusercontent.com/85542595/208893054-5bb1a95a-00e8-41fc-96ee-3f520b64ce92.png">
+
 
 ### defaultProps
 
