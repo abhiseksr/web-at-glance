@@ -540,6 +540,11 @@ class App extends Component {
 }
 ```
 
+### Designing state Minimizing state
+
+<img width="1020" alt="image" src="https://user-images.githubusercontent.com/85542595/208917311-589fb9db-5d00-4dd1-847e-47a773874214.png">
+
+
 ### setState
 
 The correct way to change state on our application
