@@ -520,6 +520,10 @@ Stateful data, data in our application that can change (remember, we can't chang
 ```javascript
 class App extends Component {
   constructor(props) {
+    // if you are not dealing with states no need to make constructor
+    // if you are making stateful component, then you need to create constructor function and call super()
+    // if you are not using props inside constructor, no need to pass props to super
+    // props can be used outside the constructor regardless of constructor is declared and defined or not.
     // every constructor takes props as parameter and has super(props) which calls constructor of the Component that we're inheriting from
     super(props);
     this.state = { favColor: 'red' };
@@ -966,6 +970,21 @@ this.setState({name: 'Tim'}, () => {
   );
 });
 ```
+
+### Method binding
+
+We need to bind methods that are called out of context. `this` inside a normal function refers to how it was called(not where the function is defined as in arrow function). In this case react is calling the handleClick therefore `this` doesn't know about handleClick method.
+
+<img width="816" alt="image" src="https://user-images.githubusercontent.com/85542595/208901445-ef5ce27f-7b49-4be2-aa62-1abde21156d5.png">
+
+In the following syntax this inside arrow function always refers to the BrokenClick2 object, hence we do not need to bind it.
+
+<img width="645" alt="image" src="https://user-images.githubusercontent.com/85542595/208901983-21cc799e-81e6-479b-8184-bd2e0c170df1.png">
+
+#### Alternate Syntax
+
+<img width="1020" alt="image" src="https://user-images.githubusercontent.com/85542595/208903476-5ecaee49-e041-4805-b1d0-307651e7532f.png">
+
 
 ## Virtual DOM
 
