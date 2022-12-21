@@ -135,6 +135,8 @@ JSX simplifies writing components (otherwise we need to create every DOM element
 It looks like returning HTML from within our JS code
 - All JSX tags must be closed
 
+We can embed javascript expressions(not statements) https://youtu.be/WVyCrI1cHi8(learn the difference between expression and statement) inside HTML code. We can further embed HTML code in the embeded javascript code, and so on. To use javascript expressions it must be enclosed in curly braces{}.
+
 ### Babel
 
 Babel is a transpiler: it converts from one type of source code to another
@@ -173,6 +175,19 @@ It usually is not done this way (we transpile code before the page load)
     ReactDOM.render(<Pet />, document.getElementById("app"));
 </script>
 ```
+# React.createElement()
+```javascript
+   React.createElement(
+        type,
+        [props],
+        [...children]
+   )
+ ```
+ Babel transpiles JSX into nested React.createElement() - 
+ <img width="916" alt="image" src="https://user-images.githubusercontent.com/85542595/208888010-c04dcf9c-1898-45cd-a751-b1e0acf57385.png">
+
+ <img width="718" alt="image" src="https://user-images.githubusercontent.com/85542595/208888136-7beb6d3e-c8cd-4a7e-b515-7f9105815f93.png">
+
 
 ### JSX with JS and CSS
 
