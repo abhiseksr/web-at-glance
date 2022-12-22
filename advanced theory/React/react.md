@@ -1709,3 +1709,31 @@ For example, to have food and beverage pairings in route:
 
 In this case, props.match.params would be an object with two keys: foodName and drinkName.
 
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/85542595/209170102-46a248f7-5ad7-4785-8000-c96df67dd259.png">
+      
+### Including a 404
+
+```javascript
+class Routes extends Component {
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/about"
+               render={() => <About />} />
+        <Route exact path="/contact"
+               render={routeProps => <Contact {...routeProps} />} />
+        <Route exact path="/blog/:slug"
+               render={routeProps => <BlogPost {...routeProps} />} />
+        <Route exact path="/blog"
+               render={() => <BlogHome />} />
+        <Route exact path="/"
+               render={() => <Home />} />
+        <Route render={() => <NotFound />} />
+      </Switch>
+    );
+  }
+}
+```
+Note the use of exact above the catch-all!
+
+
