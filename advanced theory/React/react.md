@@ -1165,7 +1165,7 @@ console.log(obj);
 
 #### Multiple form inputs
 
-<img width="1020" alt="image" src="https://user-images.githubusercontent.com/85542595/209050682-0bfb01bc-3c6e-43f3-a7eb-95dc09ac751e.png">
+<img width="1020" alt="image" src="https://user-images.githubusercontent.com/85542595/209054232-b6ac5f71-31fc-47f3-8567-97d4ceb8df4c.png">
 
 The keys in state must match with name in the form inputs.
 
@@ -1203,6 +1203,9 @@ class NameForm extends Component {  // ...
 This allows avoiding writing multiple handlers for syncing state in react to the state in actual DOM.
 
 ### Using UUID for Unique Keys
+
+Learn more about keys here - 
+https://reactjs.org/docs/reconciliation.html
 
 ```javascript
 import uuid from 'uuid/v4';
