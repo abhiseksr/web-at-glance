@@ -1411,6 +1411,6 @@ export default App;
 
 ### Server-Side Routing
 
-- Traditional routing is “Server-side routing”
+1. Traditional routing is “Server-side routing”
       - Clicking a <a> link causes browser to request a new page & replace entire DOM 
--  Server decides what HTML to return based on URL requested, entire page refreshes
+2.  Server decides what HTML to return based on URL requested, entire page refreshes
