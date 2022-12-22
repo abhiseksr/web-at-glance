@@ -1485,3 +1485,82 @@ There are other routers besides BrowserRouter — don’t worry about them.
 
 ### Routes, Switch, and Links
 
+```javascript
+import React, { Component } from "react";
+import Home from "./Home";
+import Eat from "./Eat";
+import Drink from "./Drink";
+import NavBar from "./NavBar";
+import {Route, Switch} from "react-router-dom";
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <NavBar />
+          <Switch>
+            <Route 
+              exact path="/"      
+              render={() => <Home />} />
+            <Route 
+              exact path="/eat"  
+              render={() => <Eat />} />
+            <Route 
+              exact path="/drink"
+              render={() => <Drink />} />
+          </Switch>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+#### Route Component
+
+```javascript
+<Route exact path="/eat" render={() => <Eat />} />
+```
+
+1. Route component acts as translation service between routes & components.
+      - Tell it path to look for in URL, and what to render when it finds match.
+2. Props you can set on a Route:
+      - exact (optional bool), does path need to match exactly? /foo/bar in URL bar will match path="/foo" — but match won’t be exact.
+      - path: path that must match
+      - render what should be rendered (expects function that returns JSX)
+
+That example: “when path is exactly /eat, render <Eat /> component”
+
+Read difference between render and component here https://stackoverflow.com/questions/48150567/react-router-difference-between-component-and-render
+      
+#### Switch Component
+
+```javascript
+<Switch>
+   <Route 
+      exact path="/"      
+      render={() => <Home />} />
+   <Route 
+      exact path="/eat"  
+      render={() => <Eat />} />
+   <Route 
+      exact path="/drink"
+      render={() => <Drink />} />
+</Switch>
+```
+ 
+- Since we only expect one of these to match, wrap in <Switch>
+- This stops searching once it finds a match
+- This is almost always what you want
+
+#### Link Component
+
+1. The <Link> component acts as a replacement for <a> tags.
+2. Instead of an href attribute, <Link> uses a to prop.
+3. Clicking on <Link> does not issue a GET request.
+      - JS intercepts click and does client-side routing
+```javascript
+<p>Go to <Link to="/drink">drinks</Link> page</p>
+```
+
