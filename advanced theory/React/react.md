@@ -1149,6 +1149,59 @@ It is a component that React doesn't have contorl over
 <button onClick={/* trying to handle submit here */} type="submit">Save</button>
 ```
 
+### Computed property names
+
+Computed property names are about using dynamic names for properties in the object initialiser, not adding them afterwards.
+
+```javascript
+var key = 'DYNAMIC_KEY',
+    obj = {
+        [key]: 'ES6!'
+    };
+
+console.log(obj);
+// > { 'DYNAMIC_KEY': 'ES6!' }
+```
+
+#### Multiple form inputs
+
+<img width="1020" alt="image" src="https://user-images.githubusercontent.com/85542595/209050682-0bfb01bc-3c6e-43f3-a7eb-95dc09ac751e.png">
+
+The keys in state must match with name in the form inputs.
+
+```javascript
+this.state = { firstName: "", lastName: "" };
+```
+
+```javascript
+class NameForm extends Component {  // ...
+  handleChange(evt) {
+    this.setState({ [evt.target.name]: evt.target.value });
+  }
+
+  render() {
+    return (
+        <form onSubmit={this.handleSubmit}>
+
+          <label htmlFor="firstName">First:</label>
+          <input id="firstName" name="firstName"
+                 value={this.state.firstName}
+                 onChange={this.handleChange} />
+
+          <label htmlFor="lastName">Last:</label>
+          <input id="lastName" name="lastName"
+                 value={this.state.lastName}
+                 onChange={this.handleChange} />
+          <button>Add a new person!</button>
+
+        </form>
+    );
+  }
+} // end
+```
+
+This allows avoiding writing multiple handlers for syncing state in react to the state in actual DOM.
+
 ## Refs
 
 Ref is a direct reference to a DOM element (all the things before haven't referenced the DOM directly, we just provided state to react and then react decided what to do with the DOM)
