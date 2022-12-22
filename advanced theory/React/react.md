@@ -1564,3 +1564,41 @@ Read difference between render and component here https://stackoverflow.com/ques
 <p>Go to <Link to="/drink">drinks</Link> page</p>
 ```
 
+#### NavLink Component
+
+1. <NavLink> is just like link, with one additional feature
+      - If at page that link would go to, the <a> gets a CSS class of active
+      - This lets you stylize links to “page you are already at” using the activeStyle (in-line) or activeClassName props
+      - You should include an exact prop here as well
+2. Very helpful for navigation menus
+
+#### A Sample Navigation Bar
+
+```javascript
+import React, {Component} from "react";
+import {NavLink} from "react-router-dom";
+import './NavBar.css';
+
+class NavBar extends Component {
+  render() {
+    const activeStyle = {
+      fontWeight: "bold",
+      color: "mediumorchid"
+    };
+    return (
+        <nav>
+          <NavLink exact to="/"
+            activeStyle={activeStyle}>Home</NavLink>
+          <NavLink exact to="/eat"
+            activeStyle={activeStyle}>Eat</NavLink>
+          <NavLink exact to="/drink"
+            activeStyle={activeStyle}>Drink</NavLink>
+        </nav>
+    );
+  }
+}
+
+export default NavBar;
+```
+         
+>Note: Server-side Routing has better SEO than Client-side Routing.
