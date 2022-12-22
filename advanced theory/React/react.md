@@ -1202,6 +1202,34 @@ class NameForm extends Component {  // ...
 
 This allows avoiding writing multiple handlers for syncing state in react to the state in actual DOM.
 
+### Using UUID for Unique Keys
+
+```javascript
+import uuid from 'uuid/v4';
+class ShoppingList extends Component {
+  constructor(props){
+      super();
+      this.state = {
+           items: [{name:"apple", id:uuid(), qty: 2},
+           {name: "mango", id: uuid(), qty: 3
+           ]
+      }
+  }  
+  renderItems() {
+    return (
+      <ul>
+        {this.state.items.map(item => (
+          <li key={item.id}>
+            {item.name}:{item.qty}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+}
+```
+
 ## Refs
 
 Ref is a direct reference to a DOM element (all the things before haven't referenced the DOM directly, we just provided state to react and then react decided what to do with the DOM)
