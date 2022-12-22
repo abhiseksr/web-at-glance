@@ -1214,7 +1214,7 @@ class ShoppingList extends Component {
       super();
       this.state = {
            items: [{name:"apple", id:uuid(), qty: 2},
-           {name: "mango", id: uuid(), qty: 3
+           {name: "mango", id: uuid(), qty: 3}
            ]
       }
   }  
