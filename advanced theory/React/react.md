@@ -1267,6 +1267,9 @@ See here: https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html for
 
 ### Mounting
 
+<img width="1020" alt="image" src="https://user-images.githubusercontent.com/85542595/209058496-0417ce23-60b5-4775-980b-dbd952d70eb4.png">
+
+
 Mounting happens when the component is first rendered in the DOM
 
 - constructor()
