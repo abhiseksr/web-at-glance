@@ -1602,3 +1602,110 @@ export default NavBar;
 ```
          
 >Note: Server-side Routing has better SEO than Client-side Routing.
+
+# Patterns in React Router
+
+URL Parameters
+
+### An Anti-Pattern
+
+```javascript
+class App extends Component {
+  render() {
+    return (
+      <App>
+        <Route path="/food/tacos"
+               render={() => <Food name="tacos" />} />
+        <Route path="/food/salad"
+               render={() => <Food name="salad" />} />
+        <Route path="/food/sushi"
+               render={() => <Food name="sushi" />} />
+        <Route path="/food/pasta"
+               render={() => <Food name="pasta" />} />
+      </App>
+    );
+  }
+}
+```
+
+### What’s the Problem?
+
+```javascript
+<App>
+  <Route path="/food/tacos"
+         render={() => <Food name="tacos" />} />
+  <Route path="/food/salad"
+         render={() => <Food name="salad" />} />
+  <Route path="/food/sushi"
+         render={() => <Food name="sushi" />} />
+  <Route path="/food/pasta"
+         render={() => <Food name="pasta" />} />
+</App>
+```
+        
+- Lots of duplication
+- What if we want to add more foods?
+- Solution: Let’s use URL parameters!
+
+### A Better Way
+
+```javascript
+import React, { Component } from "react";
+import Nav from "./Nav";
+import {Route} from "react-router-dom";
+import Food from "./Food";
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Nav />
+        <Route path="/food/:name"
+               render={routeProps => <Food {...routeProps} />} />
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+By default the component in route recieve three props history, location and match automatically.
+            
+ ### Accessing URL Parameters
+
+The match route prop stores info on URL and associated URL parameters.
+
+1. It’s an object with these keys:
+      - path: same as path prop passed to Route
+      - url: specific URL found in the URL bar
+      - isExact: is match between url & path exact?
+      - params: object of all of the url parameters
+
+example
+```javascript
+{
+  path: "/food/:name",
+  url: "/food/tacos",
+  isExact: true,
+  params: {
+    name: "tacos"
+  }
+}
+```
+
+### Multiple URL Parameters
+
+In that example, we only used one URL parameter.
+
+It’s possible to have multiple parameters in a single route.
+
+For example, to have food and beverage pairings in route:
+
+```javascript
+<Route path="/food/:foodName/drink/:drinkName"
+       render={routeProps => <Food {...routeProps} />} />
+```
+
+In this case, props.match.params would be an object with two keys: foodName and drinkName.
+
