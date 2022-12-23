@@ -1736,4 +1736,42 @@ class Routes extends Component {
 ```
 Note the use of exact above the catch-all!
 
+# React Hooks
+
+## useState Hook
+              
+```javascript
+import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  // useState returns an array of length 2.... array destructuring on left side
+  // first item is the state itself and the second is a function which sets the state
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+## Custom Hooks
+
+Some states occur frequently and possess same behaviour. We may avoid rewriting duplicate logic for each and create a custom hook that can be used everywhere.
+              
+### Handling multiple boolean states (custom hook useToggle)
+              
+<img width="559" alt="image" src="https://user-images.githubusercontent.com/85542595/209340126-f17c655a-2821-409a-9ae0-97cb7d033498.png">
+<img width="740" alt="image" src="https://user-images.githubusercontent.com/85542595/209340287-d58ad7d8-0258-456b-8738-b79855ceae95.png">
+
+### Building custom hook useInputState
+
+<img width="740" alt="image" src="https://user-images.githubusercontent.com/85542595/209340838-6c8ed439-c167-4261-ade1-0502534c209d.png">             
+<img width="717" alt="image" src="https://user-images.githubusercontent.com/85542595/209340939-abe570c4-8359-4c5c-b9d6-6753cb5cc655.png">
+
+
 
