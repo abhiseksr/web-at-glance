@@ -1814,5 +1814,8 @@ export default App;
 
 The second argument can be used to define all the variables (allocated in this array) on which the hook depends. If one of the variables changes, the hook runs again. If the array with the variables is empty, the hook doesn't run when updating the component at all, because it doesn't have to watch any variables.
               
-For useEffect to act as componentDidMount provide second argument to useEffect function an empty array.
-For useEffect to act as componentDidUpdate provide variables in the array to look over.
+- For useEffect to act as componentDidMount provide second argument to useEffect function an empty array.
+- For useEffect to act as componentDidUpdate provide variables in the array to look over.
+- useEffect hook can be used any number of times in the same component. It is needed when logic differs for states.
+              
+
