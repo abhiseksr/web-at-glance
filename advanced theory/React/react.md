@@ -1743,7 +1743,7 @@ Note the use of exact above the catch-all!
 ```javascript
 import React, { useState } from 'react';
 
-function Example() {
+function Example(props) { // by default props are passed to the function component
   // Declare a new state variable, which we'll call "count"
   // useState returns an array of length 2.... array destructuring on left side
   // first item is the state itself and the second is a function which sets the state
