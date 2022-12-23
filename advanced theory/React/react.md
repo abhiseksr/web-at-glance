@@ -1770,8 +1770,49 @@ Some states occur frequently and possess same behaviour. We may avoid rewriting 
 
 ### Building custom hook useInputState
 
-<img width="740" alt="image" src="https://user-images.githubusercontent.com/85542595/209340838-6c8ed439-c167-4261-ade1-0502534c209d.png">             
+<img width="492" alt="image" src="https://user-images.githubusercontent.com/85542595/209341942-d9240dfb-e226-45a6-8b1d-0ca4f1ac61bf.png">
 <img width="717" alt="image" src="https://user-images.githubusercontent.com/85542595/209340939-abe570c4-8359-4c5c-b9d6-6753cb5cc655.png">
 
+## useEffect Hook
+              
+> If you’re familiar with React class lifecycle methods, you can think of useEffect Hook as componentDidMount, componentDidUpdate, and componentWillUnmount combined.
+              
+useEffect hook should return nothing or a clean up function. That's why you may see the following warning in your developer console log: 07:41:22.910 index.js:1452 Warning: useEffect function must return a cleanup function or nothing. Promises and useEffect(async () => ...) are not supported, but you can call an async function inside an effect.. That's why using async directly in the useEffect function isn't allowed. Let's implement a workaround for it, by using the async function inside the effect.
 
+ ```javascript
+ import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
+function App() {
+  const [data, setData] = useState({ hits: [] });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        'https://hn.algolia.com/api/v1/search?query=redux',
+      );
+
+      setData(result.data);
+    };
+
+    fetchData();
+  }, []); // if empty array was not provided all variables in the are looked over for changes, and since the data state changes react rerenders the compoenent infinitely because useEffect runs after every render
+
+  return (
+    <ul>
+      {data.hits.map(item => (
+        <li key={item.objectID}>
+          <a href={item.url}>{item.title}</a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default App;
+```
+
+The second argument can be used to define all the variables (allocated in this array) on which the hook depends. If one of the variables changes, the hook runs again. If the array with the variables is empty, the hook doesn't run when updating the component at all, because it doesn't have to watch any variables.
+              
+For useEffect to act as componentDidMount provide second argument to useEffect function an empty array.
+For useEffect to act as componentDidUpdate provide variables in the array to look over.
