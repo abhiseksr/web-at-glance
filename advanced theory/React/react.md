@@ -1796,7 +1796,7 @@ function App() {
     };
 
     fetchData();
-  }, []); // if empty array was not provided all variables in the are looked over for changes, and since the data state changes react rerenders the compoenent infinitely because useEffect runs after every render
+  }, []); // if empty array was not provided all variables in the component(normal, state, props) are looked over for changes, and since the data state changes react rerenders the component infinitely because useEffect runs after every render
 
   return (
     <ul>
@@ -1816,6 +1816,6 @@ The second argument can be used to define all the variables (allocated in this a
               
 - For useEffect to act as componentDidMount provide second argument to useEffect function an empty array.
 - For useEffect to act as componentDidUpdate provide variables in the array to look over.
-- useEffect hook can be used any number of times in the same component. It is needed when logic differs for states.
+- useEffect hook can be used any number of times in the same component. It is needed when logic differs for variables.
               
 
